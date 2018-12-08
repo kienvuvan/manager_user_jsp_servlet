@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	<display-name>manager_user</display-name>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>home</servlet-name>
+		<servlet-class>servlet.ADM001_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>home</servlet-name>
+		<url-pattern>/home</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ADM002</servlet-name>
+		<servlet-class>servlet.ADM002_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ADM002</servlet-name>
+		<url-pattern>/ADM002</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ADM003</servlet-name>
+		<servlet-class>servlet.ADM003_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ADM003</servlet-name>
+		<url-pattern>/ADM003</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ADM004</servlet-name>
+		<servlet-class>servlet.ADM004_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ADM004</servlet-name>
+		<url-pattern>/ADM004</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ADM005</servlet-name>
+		<servlet-class>servlet.ADM005_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ADM005</servlet-name>
+		<url-pattern>/ADM005</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ADM006</servlet-name>
+		<servlet-class>servlet.ADM006_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ADM006</servlet-name>
+		<url-pattern>/ADM006</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+		<servlet-name>Error</servlet-name>
+		<servlet-class>servlet.SystemError_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Error</servlet-name>
+		<url-pattern>/Error</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>logFilter</filter-name>
+		<filter-class>filter.LoginFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>logFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<error-page>
+		<error-code>404</error-code>
+		<location>/views/System_Error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<error-code>405</error-code>
+		<location>/views/System_Error.jsp</location>
+	</error-page>
+
+	<error-page>
+		<exception-type>java.sql.SQLException</exception-type>
+		<location>/views/System_Error.jsp</location>
+	</error-page>
+
+</web-app>
