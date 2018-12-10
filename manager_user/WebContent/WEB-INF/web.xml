@@ -9,12 +9,12 @@
 	</welcome-file-list>
 
 	<servlet>
-		<servlet-name>home</servlet-name>
+		<servlet-name>login</servlet-name>
 		<servlet-class>servlet.ADM001_Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>home</servlet-name>
-		<url-pattern>/home</url-pattern>
+		<servlet-name>login</servlet-name>
+		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -70,7 +70,7 @@
 		<servlet-name>Error</servlet-name>
 		<url-pattern>/Error</url-pattern>
 	</servlet-mapping>
-
+	
 	<filter>
 		<filter-name>logFilter</filter-name>
 		<filter-class>filter.LoginFilter</filter-class>
@@ -81,11 +81,11 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<error-page>
+	<!-- <error-page>
 		<error-code>404</error-code>
 		<location>/views/System_Error.jsp</location>
 	</error-page>
-
+	
 	<error-page>
 		<error-code>405</error-code>
 		<location>/views/System_Error.jsp</location>
@@ -94,6 +94,6 @@
 	<error-page>
 		<exception-type>java.sql.SQLException</exception-type>
 		<location>/views/System_Error.jsp</location>
-	</error-page>
+	</error-page> -->
 
 </web-app>

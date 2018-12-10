@@ -4,10 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style>
-<%@include file="/css/style.css"%>
-</style>
-<script type="text/javascript" src="../js/user.js"></script>
+<style><%@include file="/assets/css/style.css"%></style>
 <title>ユーザ管理</title>
 </head>
 <body>

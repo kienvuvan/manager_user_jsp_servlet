@@ -9,6 +9,6 @@
 <body>
 </body>
 <script type="text/javascript">
-	document.location.href = 'home';
+	document.location.href = 'login';
 </script>
 </html>

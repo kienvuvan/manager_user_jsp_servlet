@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style><%@include file="/css/style.css"%></style>
+<style><%@include file="/assets/css/style.css"%></style>
 <script type="text/javascript" src="../js/user.js"></script>
 <title>ユーザ管理</title>
 </head>
@@ -43,8 +43,8 @@
 						<td align="left" width="80px">
 							<select name="group_id">
 								<option value="0">全て</option>								
-								<option value="0">Nhóm 1</option>
-								<option value="0">Nhóm 2</option>
+								<option value="1">Nhóm 1</option>
+								<option value="2">Nhóm 2</option>
 							</select>							
 						</td>
 						<td align="left">

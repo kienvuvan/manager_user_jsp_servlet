@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import Dao.UserDatabase;
+import dao.UserDatabase;
 import bean.User;
 
 public class LoginFilter implements Filter {
@@ -31,39 +31,62 @@ public class LoginFilter implements Filter {
 		HttpServletResponse response = (HttpServletResponse) servletResponse;
 		HttpSession session = request.getSession(false);
 		try {
-			String loginURI = request.getContextPath() + "/home";
+			String loginURI = request.getContextPath() + "/login";
+			String ADM002_URI = request.getContextPath() + "/ADM002";
 			boolean loggedIn = session != null && session.getAttribute("user") != null;
 			boolean loginRequest = request.getRequestURI().equals(loginURI);
-			String errorAccount = "";
-			String userNameSave = "";
-			if (loggedIn || loginRequest) {
+			boolean ADM002_Request = request.getRequestURI().equals(ADM002_URI);
+			UserDatabase userDatabase = new UserDatabase();
+			StringBuilder error = new StringBuilder("");
+			String username = "";
+			// Nếu link là link trang đăng nhập
+			if (loginRequest) {
+				error.delete(0, error.length());
+				username = "";
 				filterChain.doFilter(request, response);
 				return;
+				// Nếu link là link vào trang ADM002.jsp
+			} else if (ADM002_Request) {
+				username = request.getParameter("loginId");
+				String password = request.getParameter("password");
+				if ("".equals(username)) {
+					error.append("アカウント名を入力してください<br>");
+				}
+				if ("".equals(password)) {
+					error.append("パスワードを入力してください");
+				}
+				if ("".equals(error.toString())) {
+					if (userDatabase.findAccount(username, password)) {
+						User user = new User();
+						user.setLoginName(username);
+						user.setPassword(password);
+						session.setAttribute("user", user);
+						filterChain.doFilter(request, response);
+						return;
+					} else {
+						if (username != null && password != null) {
+							error.append("アカウント名または パスワードは不正です。");
+						}
+					}
+				}
 			} else {
-				String userName = request.getParameter("loginId");
-				String passWord = request.getParameter("password");
-				UserDatabase userDatabase = new UserDatabase();
-				if (userDatabase.findAccount(userName, passWord)) {
-					User user = new User();
-					user.setLoginName(userName);
-					user.setPassword(passWord);
-					request.getSession().setAttribute("user", user);
-					filterChain.doFilter(request, response);
-					return;
-				} else {
-					if (userName != null && passWord != null) {
-						errorAccount = "Tai khoan hoac mat khau khong chinh xac";
-						userNameSave = userName;
+				if (loggedIn) {
+					User userLoggedIn = (User) session.getAttribute("user");
+					if (userDatabase.findAccount(userLoggedIn.getLoginName(), userLoggedIn.getPassword())) {
+						RequestDispatcher requestDispatcher = request.getServletContext()
+								.getRequestDispatcher("/views/ADM002.jsp");
+						requestDispatcher.forward(request, response);
+						return;
 					}
 				}
 			}
-			request.getSession().setAttribute("errorAccount", errorAccount);
-			request.getSession().setAttribute("userNameSave", userNameSave);
-			response.sendRedirect(loginURI);
+			request.getSession().setAttribute("errorAccount", error.toString());
+			request.getSession().setAttribute("usernameSave", username);
+			response.sendRedirect("login");
 		} catch (Exception e) {
-			 RequestDispatcher requestDispatcher = request.getServletContext()
-			 .getRequestDispatcher("/views/System_Error.jsp");
-			 requestDispatcher.forward(request, response);
+			RequestDispatcher requestDispatcher = request.getServletContext()
+					.getRequestDispatcher("/views/System_Error.jsp");
+			requestDispatcher.forward(request, response);
 		}
 	}
 

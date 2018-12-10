@@ -5,8 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style><%@include file="/css/style.css"%></style>
-<script type="text/javascript" charset="UTF-8"><%@include file="/js/ADM001.js"%></script>
+<style><%@include file="/assets/css/style.css"%></style>
 <title>ユーザ管理</title>
 </head>
 <body style="text-align: center">
@@ -26,12 +25,12 @@
 					<td class="errMsg" colspan="2" id="errMsg">&nbsp;</td>
 				</tr>
 				<tr>
-					<td colspan="2" id="errorAccount" class="errMsg"><c:out value="${errorAccount}"/><br></td>
+					<td colspan="2" id="errorAccount" class="errMsg">${errorAccount}<br></td>
 				</tr>
 				<tr align="left">
 					<td class="lbl_left">アカウント名:</td>
 					<td align="left"><input class="txBox" type="text"
-						name="loginId" id="loginId" value="${userNameSave}" size="20"
+						name="loginId" id="loginId" value="${usernameSave}" size="20"
 						onfocus="this.style.borderColor='#0066ff';"
 						onblur="this.style.borderColor='#aaaaaa';" /></td>
 				</tr>

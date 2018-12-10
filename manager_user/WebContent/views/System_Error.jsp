@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<style><%@include file="/css/style.css"%></style>
-<script type="text/javascript" src="../js/user.js"></script>
+<style><%@include file="/assets/css/style.css"%></style>
 <title>ユーザ管理</title>
 </head>
 <body>
@@ -15,7 +14,6 @@
 			<table>
 			<tr>
 			<td width = "80%"><img src="images/logo-manager-user.gif" alt="Luvina" /></td>
-			<td align="left"><a href = "ADM001.html">ログアウト</a> &nbsp; <a href = "ADM002.html">トップ</a></td>
 			</tr>
 			</table>
 			</div>
@@ -33,17 +31,12 @@
 		</tr>
 		<tr>
 			<td align="center" colspan="2">
-				<font color = "red">Hiện thị câu thông báo lỗi ở đây.</font>
+				<font color = "red">システムエラーが発生しました。</font>
 			</td>
 		</tr>
 		<tr>
 			<td align="center" colspan="2">
 				<div style="height:70px"></div>
-			</td>
-		</tr>
-		<tr>
-			<td align="center" colspan="2">
-				<input class="btn" type="submit" value="OK" onclick=""/>
 			</td>
 		</tr>
 	</table>
